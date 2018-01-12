@@ -1,0 +1,56 @@
+<div class="col-md-3">
+
+</div>
+<div class="col-md-6">
+  <h3>SignUp</h3>
+<form name="signup"  ng-submit="submitForm(clientForm.$valid)" novalidate>
+<div class="form-group">
+  <label for="firstName">First Name</label>
+  <input type="text" class="form-control" name="firstName" ng-model="Client.firstName" id="firstName" placeholder="Enter First Name" ng-minlength="5" ng-maxlength="12" required>
+  <span ng-show="clientForm.firstName.$invalid && clientForm.firstName.$touched" class="help-block">First Name is required</span>
+  <p ng-show="clientForm.firstName.$error.minlength" class="help-block">First Name is too short.</p>
+  <p ng-show="clientForm.firstName.$error.maxlength" class="help-block">First Name is too long.</p>
+</div>
+<div class="form-group">
+  <label for="lastName">Last Name</label>
+  <input type="text" class="form-control" name="lastName" ng-model="Client.lastName" id="lastName" placeholder="Enter Last Name" ng-minlength="3" ng-maxlength="12" >
+  <p ng-show="clientForm.lastName.$error.minlength" class="help-block">First Name is too short.</p>
+  <p ng-show="clientForm.lastName.$error.maxlength" class="help-block">First Name is too long.</p>
+</div>
+<div class="form-group">
+  <label for="Username">Username</label>
+  <input type="text" class="form-control" name="username" ng-model="Client.Username" id="" placeholder="Enter Username" ng-minlength="5" ng-maxlength="12" required>
+  <p ng-show="clientForm.Username.$invalid && clientForm.firstName.$touched" class="help-block">Username is required</p>
+  <p ng-show="clientForm.Username.$error.minlength" class="help-block">Username is too short.</p>
+  <p ng-show="clientForm.Username.$error.maxlength" class="help-block">Username is too long.</p>
+</div>
+<div class="form-group">
+  <label for="emailId">Email ID</label>
+  <input type="email" class="form-control" name="emailId" ng-model="Client.emailId" id="emailId" placeholder="Email ID" required>
+  <p ng-show="clientForm.emailId.$invalid" class="help-block">Email is invalid</p>
+</div>
+<div class="form-group">
+  <label for="mobileNumber">Mobile Number</label>
+  <input type="number" class="form-control" name="mobileNumber" ng-model="Client.mobileNumber" id="mobileNumber" placeholder="Mobile Number" ng-minlength="10" ng-maxlength="10">
+  <p ng-show="clientForm.mobileNumber.$invalid" class="help-block">Mobile Number is invalid</p>
+</div>
+<div class="form-group">
+  <label for="password">Password</label>
+  <input type="password" class="form-control" name="password" ng-model="Client.password" id="password" placeholder="Password" ng-pattern="/^(?=.*[A-Za-z])(?=.*\d)(?=.*[$@$!%*#?&])[A-Za-z\d$@$!%*#?&]{8,}$/" required ng-minlength="8" ng-maxlength="20">
+  <p ng-show="clientForm.password.$error.required && myForm.password.$dirty">required</p>
+   <p ng-show="!clientForm.password.$error.required && (clientForm.password.$error.minlength || clientForm.password.$error.maxlength) && clientForm.password.$dirty">Passwords must be between 8 and 20 characters.</p>
+   <p ng-show="!clientForm.password.$error.required && !clientForm.password.$error.minlength && !clientForm.password.$error.maxlength && clientForm.password.$error.pattern && clientForm.password.$dirty">Must contain one lower &amp; uppercase letter, and one non-alpha character (a number or a symbol.)</p>
+</div>
+<div class="form-group">
+  <label for="confirmPassword">Confirm Password</label>
+  <input type="password" class="form-control" name="confirmPassword" ng-model="Client.confirmPassword" id="confirmPassword" placeholder="Confirm Password" valid-confirmPassword required>
+  <p ng-show="clientForm.confirmPassword.$error.required && clientForm.confirmPassword.$dirty">Please confirm your password.</p>
+   <p ng-show="!clientForm.confirmPassword.$error.required && clientForm.confirmPassword.$error.noMatch && clientForm.password.$dirty">Passwords do not match.</p>
+</div>
+<div class="form-group">
+  <input type="hidden" class="form-control" value="Student" ng-model="Client.role">
+</div>
+<button type="submit" class="btn btn-default" ng-click="SignUp()">Sign Up</button>
+<h5>Already Have an Account.? Please <a href="#!/Login">Login </a></h5>
+</form>
+</div>

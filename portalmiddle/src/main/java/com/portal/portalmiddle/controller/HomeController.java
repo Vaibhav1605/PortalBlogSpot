@@ -35,17 +35,15 @@ public class HomeController {
 		}
 		return new ResponseEntity<Client>(client, HttpStatus.CREATED);
 	}
-	
+
 	@PostMapping("/MyProfile")
-	public ResponseEntity<?> MyProfile(@RequestBody Client client)
-	{
+	public ResponseEntity<?> MyProfile(@RequestBody Client client) {
 		try {
 			clientDao.updateClient(client);
-		}catch(Exception e)
-		{
+		} catch (Exception e) {
 			return new ResponseEntity<String>("Client updation failed", HttpStatus.INTERNAL_SERVER_ERROR);
 		}
-		return new ResponseEntity<Client>(client,HttpStatus.ACCEPTED);
+		return new ResponseEntity<Client>(client, HttpStatus.ACCEPTED);
 	}
 
 }

@@ -1,10 +1,16 @@
 package com.portal.portalbackend;
 
+import java.util.List;
+
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Transient;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 public class Client {
@@ -22,6 +28,18 @@ public class Client {
 	@Transient
 	private String confirmPassword;
 	private String role = "ROLE_USER";
+	
+	@JsonIgnore
+	@OneToMany(mappedBy="client", fetch=FetchType.EAGER)
+	private List<Blog> blogs;
+
+	public List<Blog> getBlogs() {
+		return blogs;
+	}
+
+	public void setBlogs(List<Blog> blogs) {
+		this.blogs = blogs;
+	}
 
 	public int getClientId() {
 		return clientId;

@@ -28,6 +28,10 @@ Homemodule.config(function($routeProvider){
     templateUrl: "Login.html",
     controller: "HomeController"
 })
+.when("/addblog", {
+  templateUrl:"Blog.html",
+  controller:"BlogController"
+})
 })
 
 

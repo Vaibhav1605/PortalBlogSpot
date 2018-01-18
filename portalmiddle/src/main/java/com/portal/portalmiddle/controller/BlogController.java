@@ -9,6 +9,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.portal.portalbackend.Blog;
@@ -41,6 +42,20 @@ public class BlogController {
 		}catch (Exception e){
 			return new ResponseEntity<Boolean>(false,HttpStatus.INTERNAL_SERVER_ERROR);
 		}
+		
+	}
+	
+	@GetMapping("/blogsinfo")
+	public ResponseEntity<?> blogsinfo(@RequestParam("blogId") int blogId){
+		try{
+Blog blog = blogDao.getblogById(blogId);
+			
+			return new ResponseEntity<Blog>(blog,HttpStatus.OK);
+		}catch(Exception e)
+		{
+			return new ResponseEntity<Boolean>(false, HttpStatus.NOT_FOUND);
+		}
+	
 		
 	}
 

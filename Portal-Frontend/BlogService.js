@@ -8,5 +8,9 @@ Homemodule.factory("BlogService", function($http) {
   blogservice.blogslist = function() {
     return $http.get(BASE_URL + "/blogslist");
   }
+  blogservice.blogsinfo = function(blogId)
+  {
+    return $http.get(BASE_URL+"/blogsinfo?blogId="+blogId)
+  }
   return blogservice;
 })

@@ -1,0 +1,46 @@
+<div ng-init="blogslist()">
+  <div class="col-md-2"></div>
+  <div class="col-md-8">
+    <h1 style="text-align: center">List of Blogs</h1>
+    <div>
+      <table border="2" class="table table-bordered">
+        <thead>
+          <tr>
+            <th>Blog Name</th>
+            <th>Blog Description</th>
+            <th>Added By</th>
+            <th>Added On</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr ng-repeat="blog in blogs" ng-show="blog.approved==true">
+            <td><u ng-click="blogsinfo(blog.blogId)">{{blog.blogName}}</td>
+            <td>{{blog.blogDescription}}</td>
+            <td>{{blog.client.username}}</td>
+            <td>{{blog.blogDate | date}}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div>
+      <div ng-if="clientdetails.role== 'admin'">
+        <h2 style="text-align: center">Blogs Not Approved</h2>
+        <form class="form-inline" style="text-align:right">
+        </form>
+        <table border="2" class="table table-bordered">
+          <thead>
+            <tr>
+              <th>Blog Name</th>
+              <th>Blog Description</th>
+              <th>Added By</th>
+              <th>Added On</th>
+            </thead>
+              <tbody>
+                <tr ng-repeat="blog in blogs" ng-show="blog.approved==false">
+                <td><u ng-click="blogsinfo(blog.blogId)">{{blog.blogName}}</u></td>
+                <td>{{blog.blogDescription}}</td>
+                <td>{{blog.client.username}}</td>
+                <td>{{blog.blogDate | date}}</td>
+              </tr>
+            </tbody>
+      </div>

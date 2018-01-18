@@ -1,0 +1,23 @@
+<div class="col-md-2"></div>
+<div class="col-md-8">
+  <div>
+    <h3> Blog Name: {{blogContent.blogName}}</h3>
+  </div>
+  <div>
+    <h3> Blog Description: </h3>
+    <p>
+      <h4>{{blogContent.blogDescription}}</h4></p>
+  </div>
+  <div>
+    <h4> Added by : <b>{{blogContent.client.username}}</b></h4>
+    <h4> Likes : {{blogContent.likes}}</h4>
+  </div>
+  <form>
+    <div class="form-group" ng-show="clientdetails.role == 'admin' && blogContent.approved==false">
+      <input type="radio" value="true" ng-model="approved">Approve
+      <input type="radio" value="false" ng-model="approved">Reject
+      <button type="submit" name="button" ng-click="approve(approved)">Submit</button>
+    </div>
+
+  </form>
+</div>

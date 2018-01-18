@@ -1,7 +1,7 @@
-Homemodule.controller('BlogController',function($scope, $rootScope, $location, $cookieStore, BlogService){
-if($cookieStore.get('blogData')!=null)
+Homemodule.controller('BlogController',function($scope, $rootScope, $location, $cookieStore,$filter, BlogService){
+if($cookieStore.get('blog')!=null)
   {
-    $rootScope.blogContent=$cookieStore.get('blogData');
+    $rootScope.blogContent=$cookieStore.get('blog');
   }
   $scope.blog={};
   $scope.addblog = function() {
@@ -33,4 +33,17 @@ if($cookieStore.get('blogData')!=null)
   })
 
   }
+
+  $scope.blogsinfo = function(id) {
+
+    var blogData = $filter('filter')($scope.blogs, {blogId: id},true)[0];
+    console.log(blogData);
+    $cookieStore.put('blog',blogData )
+    $rootScope.blogContent = $cookieStore.get('blog')
+    $location.path("/blogsinfo")
+},
+      function(response) {
+        console.log("123")
+        console.log(response)
+      }
 })

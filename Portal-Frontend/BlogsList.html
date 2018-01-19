@@ -13,14 +13,21 @@
           </tr>
         </thead>
         <tbody>
-          <tr ng-repeat="blog in blogs" ng-show="blog.approved==true">
+          <tr dir-paginate="blog in approvedBlogs|itemsPerPage:3|filter: search"  pagination-id="Client">
+          <!-- <tr ng-repeat="blog in blogs" ng-show="blog.approved==true"> -->
             <td><u ng-click="blogsinfo(blog.blogId)">{{blog.blogName}}</td>
             <td>{{blog.blogDescription}}</td>
             <td>{{blog.client.username}}</td>
             <td>{{blog.blogDate | date}}</td>
           </tr>
+          </tr>
         </tbody>
       </table>
+      <dir-pagination-controls pagination-id="Client"
+    max-size="3"
+    direction-links:"true"
+    boundary-links:"true" >
+    </dir-pagination-controls>
     </div>
     <div>
       <div ng-if="clientdetails.role== 'admin'">
@@ -36,11 +43,25 @@
               <th>Added On</th>
             </thead>
               <tbody>
-                <tr ng-repeat="blog in blogs" ng-show="blog.approved==false">
+                <tr dir-paginate="blog in unapprovedBlogs|itemsPerPage:2|filter: search" pagination-id="Admin">
+
+                <!-- <tr ng-repeat="blog in blogs" ng-show="blog.approved==false"> -->
                 <td><u ng-click="blogsinfo(blog.blogId)">{{blog.blogName}}</u></td>
                 <td>{{blog.blogDescription}}</td>
                 <td>{{blog.client.username}}</td>
                 <td>{{blog.blogDate | date}}</td>
-              </tr>
+              <!-- </tr> -->
+            </tr>
             </tbody>
+          </table>
+          <div>
+         <dir-pagination-controls pagination-id="Admin"
+         max-size="2"
+         direction-links:"true"
+         boundary-links:"true" >
+         </dir-pagination-controls>
+         </div>
       </div>
+    </div>
+  </div>
+</div>

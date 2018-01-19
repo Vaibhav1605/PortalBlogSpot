@@ -58,5 +58,22 @@ Blog blog = blogDao.getblogById(blogId);
 	
 		
 	}
+	
+	@PostMapping("/approval")
+	public ResponseEntity<?> approval(@RequestBody Blog blog)
+	{
+		Blog currentBlog = blogDao.getblogById(blog.getBlogId());
+		System.out.println(blog.isApproved());
+		try {
+
+			currentBlog.setApproved(blog.isApproved());
+			blogDao.updateBlog(currentBlog);
+			
+			return new ResponseEntity<Boolean>(true, HttpStatus.OK);
+		}catch(Exception e)
+		{
+			return new ResponseEntity<Boolean>(false, HttpStatus.NOT_FOUND);
+		}
+	}
 
 }

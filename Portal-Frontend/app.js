@@ -1,4 +1,4 @@
-var Homemodule = angular.module('Homemodule', ['ngRoute', 'ClientValidation', 'ngCookies']);
+var Homemodule = angular.module('Homemodule', ['ngRoute', 'ClientValidation', 'ngCookies', 'angularUtils.directives.dirPagination']);
 
 Homemodule.config(function($routeProvider) {
   $routeProvider

@@ -12,5 +12,9 @@ Homemodule.factory("BlogService", function($http) {
   {
     return $http.get(BASE_URL+"/blogsinfo?blogId="+blogId)
   }
+  blogservice.approve = function(blog)
+  {
+    return $http.post(BASE_URL+"/approval",blog)
+  }
   return blogservice;
 })
